@@ -1,6 +1,8 @@
 package edu.maryville.isys320.TriviaNight;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 
 public class SampleFileCreator {
 
@@ -24,16 +26,19 @@ public class SampleFileCreator {
 					s.println();
 				}
 
+				
 				// flush the output file, to ensure the last thing written is capture in the
 				// file.
 				s.flush();
 
 				// close the output file.
-				s.close();
+					s.close();
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
+	
 }
+
