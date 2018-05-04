@@ -10,7 +10,8 @@ public class SampleFileCreator {
 
 		for (int round = 1; round <= 10; round++) {
 			// Get the output file name and round number
-			String fileName = "category_name_" + round + ".txt";
+			String fileName = "data\\category name " + round + ".txt";
+			fileName = fileName.replaceAll(" ", "_");
 			String roundNumber = String.valueOf(round);
 			File f = new File(fileName);
 
@@ -25,7 +26,6 @@ public class SampleFileCreator {
 					s.println("Answer " + i + " of 10 in round " + roundNumber);
 					s.println();
 				}
-
 				
 				// flush the output file, to ensure the last thing written is capture in the
 				// file.
@@ -35,7 +35,8 @@ public class SampleFileCreator {
 					s.close();
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				String message = e.getMessage();
+				System.out.print(message);
 			}
 		}
 	}

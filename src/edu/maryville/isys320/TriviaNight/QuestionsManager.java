@@ -17,23 +17,37 @@ public class QuestionsManager {
 		File fldr = new File(categoryFolder);
 		String[] files = fldr.list();
 		
+		//sort files by name
+		Arrays.sort(files);
+		
 		Collections.addAll(categories,files);
 		Collections.sort(categories);
+				
 		for (String fileName : categories) {
 			File f = new File(categoryFolder + "/" + fileName);
+			
 			try {
 				Scanner fs = new Scanner(f);
+				int x = 0;
 				while(fs.hasNextLine()) { // Assume Q, A, Blank Line triplets 
+					x++;
 					questions.add(fs.nextLine());
 					answers.add(fs.nextLine());
 					fs.nextLine();
 				}
 				fs.close();
+				
+				if(x != 10) {
+					System.out.println("One of the categories has an incorrect number of questions");
+					return;
+				}
 
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				String message = e.getMessage();
+				System.out.print(message);
 			}
+			
 			
 		}
 	}
